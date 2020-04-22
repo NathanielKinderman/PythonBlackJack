@@ -79,7 +79,7 @@ class Chips:
         self.total += self.bet
 
     def lose_bet(self):
-        self.totat -= self.bet
+        self.total -= self.bet
 
     
 #I need a function to take input for bets and check if bet is greater the value of chips the player has
@@ -94,3 +94,30 @@ def take_bet(chips):
                 print("Sorry you don't have enough chips for that bet. You have {}".format(chips.total))
             else:
                 break
+
+
+def hit(deck,hand):
+    
+    hand.add_card(deck.deal())
+    hand.adjust_for_ace()
+
+def hit_or_stand(deck,hand):
+    #variable playing to control the game flow 
+    global playing
+    
+    while True:
+        choice = input("Do you want to Hit or Stand? Enter 'h' or 's': ")
+        
+        #if player chooses to hit
+        if choice[0].lower() == 'h':
+            hit(deck,hand)
+        
+        #if player chooses to stand
+        elif choice[0].lower() == 's':
+            print("Player Stands. Now its the dealers turn")
+            playing = False
+
+        else:
+            print('Please try again:')
+            continue
+        break
