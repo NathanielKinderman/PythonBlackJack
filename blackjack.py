@@ -121,3 +121,24 @@ def hit_or_stand(deck,hand):
             print('Please try again:')
             continue
         break
+
+#function to show the players cards in a for loop and hides one of the dealers card
+def show_some(player,dealer):
+    print('DEALERS HAND:')
+    print('one card is hidden')
+    print(dealer.cards[1])
+    print('\n')
+    print('PLAYERS HAND:')
+    
+    for card in player.cards:
+        print(card)
+
+#function to show all cards when the game is over
+def show_all(player,dealer):
+    print("'DEALERS HAND:")
+    for card in dealer.cards:
+        print(card)
+    print('\n')
+    print('PLAYERS HAND:')
+    for card in player.cards:
+        print(card)
