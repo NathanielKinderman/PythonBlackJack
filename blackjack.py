@@ -60,15 +60,37 @@ class Hand:
         self.cards.append(card)
         self.value += values[card.rank]
 
+    #I need the function to check if players value is greater than 21 and also minus an ace from the deck
     def adjust_for_ace(self):
-        pass
+        while self.value > 21 and self.aces:
+            self.value -= 10
+            self.aces -= 1
 
-test_deck = Deck()
-test_deck.shuffle()
-test_player = Hand()
-test_player.add_card(test_deck.deal())
-test_player.add_card(test_deck.deal())
-test_player.value
 
-for card in test_player.cards:
-    print(card)
+#Keep track of how many chips to bet and player value
+class Chips:
+
+    #I set the default to 100 keep it consistent
+    def __init__(self, total = 100):
+        self.total = total
+        self.bet = 0
+
+    def win_bet(self):
+        self.total += self.bet
+
+    def lose_bet(self):
+        self.totat -= self.bet
+
+    
+#I need a function to take input for bets and check if bet is greater the value of chips the player has
+def take_bet(chips):
+    while True:
+        try:
+            chips.bet = int(input('How many chips are you going to bet?: ')) 
+        except ValueError:
+            print('Please enter and integer!')
+        else:
+            if chips.bet > chips.total:
+                print("Sorry you don't have enough chips for that bet. You have {}".format(chips.total))
+            else:
+                break
